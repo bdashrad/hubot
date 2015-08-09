@@ -5,5 +5,5 @@ def run(cmd)
   exit($?.exitstatus) unless system "umask 002 && #{cmd}"
 end
 
-print 'Installing dependencies'
+puts '---> Installing dependencies'
 run "/usr/local/bin/npm install"

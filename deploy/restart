@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 
-echo 'Restarting Hubot'
-sudo service hubot restart
+echo '---> Restarting Hubot'
+sudo service hubot stop &> /dev/null
+sudo service hubot start
