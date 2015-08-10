@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 echo '---> Restarting'
-sudo service hubot restart
+sudo systemctl reload-or-restart hubot.service
