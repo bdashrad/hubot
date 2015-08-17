@@ -7,5 +7,6 @@
   "hubot-rules",
   "hubot-seen",
   "hubot-qr",
-  "hubot-youtube"
+  "hubot-youtube",
+  "hubot-deploy"
 ]
