@@ -1,9 +1,9 @@
 {
   "name": "hubot",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "author": "William Durand <will+git@drnd.me>",
-  "description": "Superhero!",
+  "description": "Our superhero!",
   "dependencies": {
     "hubot": "^2.13.2",
     "hubot-diagnostics": "0.0.1",
