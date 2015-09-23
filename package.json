@@ -7,6 +7,7 @@
   "dependencies": {
     "hubot": "^2.13.2",
     "hubot-appearin": "^1.0.2",
+    "hubot-circleci": "^0.8.1",
     "hubot-deploy": "willdurand/hubot-deploy#tailordev",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-translate": "^0.2.0",
