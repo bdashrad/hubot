@@ -5,7 +5,7 @@
   "author": "William Durand <will+git@drnd.me>",
   "description": "Our superhero!",
   "dependencies": {
-    "hubot": "^2.13.2",
+    "hubot": "^2.16.0",
     "hubot-appearin": "^1.0.2",
     "hubot-circleci": "^0.8.1",
     "hubot-deploy": "willdurand/hubot-deploy#tailordev",
