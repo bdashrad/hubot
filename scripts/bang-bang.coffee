@@ -18,14 +18,13 @@ module.exports = (robot) ->
     store msg
 
   robot.respond /!!$/i, (msg) ->
-
     if exports.last_command?
       msg.send exports.last_command
-      msg['message']['text'] = "#{robot.name}: #{exports.last_command}"
-      robot.receive(msg['message'])
-      msg['message']['done'] = true
+      msg.message.text = "#{robot.name}: #{exports.last_command}"
+
+      robot.catchAll msg['message']
     else
-      msg.send "i don't remember hearing anything."
+      msg.send "I don't remember hearing anything."
 
 store = (msg) ->
   command = msg.match[1].trim()
