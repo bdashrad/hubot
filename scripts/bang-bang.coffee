@@ -13,6 +13,8 @@
 # Author:
 #   None
 
+{TextMessage} = require 'hubot'
+
 module.exports = (robot) ->
   robot.respond /(.+)/i, (msg) ->
     store msg
@@ -20,9 +22,9 @@ module.exports = (robot) ->
   robot.respond /!!$/i, (msg) ->
     if exports.last_command?
       msg.send exports.last_command
-      msg.message.text = "#{robot.name}: #{exports.last_command}"
-
-      robot.catchAll msg['message']
+      robot.receive new TextMessage \
+        msg.message.user,
+        "#{robot.name}: #{exports.last_command}"
     else
       msg.send "I don't remember hearing anything."
 
