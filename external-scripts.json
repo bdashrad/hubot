@@ -10,5 +10,6 @@
   "hubot-youtube",
   "hubot-deploy",
   "hubot-appearin",
-  "hubot-circleci"
+  "hubot-circleci",
+  "hubot-tweeter"
 ]
