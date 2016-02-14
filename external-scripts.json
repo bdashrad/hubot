@@ -9,5 +9,6 @@
   "hubot-qr",
   "hubot-youtube",
   "hubot-appearin",
-  "hubot-circleci"
+  "hubot-circleci",
+  "hubot-tweeter"
 ]
