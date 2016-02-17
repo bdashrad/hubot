@@ -21,7 +21,8 @@
     "hubot-seen": "^0.2.3",
     "hubot-slack": "^3.3.0",
     "hubot-tweeter": "willdurand/hubot-tweeter#tailordev",
-    "hubot-youtube": "^1.0.1"
+    "hubot-youtube": "^1.0.1",
+    "papertrail-hubot": "papertrail/papertrail-hubot"
   },
   "devDependencies": {
     "chai": "^3.3.0",

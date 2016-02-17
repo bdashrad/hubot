@@ -11,5 +11,6 @@
   "hubot-deploy",
   "hubot-appearin",
   "hubot-circleci",
-  "hubot-tweeter"
+  "hubot-tweeter",
+  "papertrail-hubot"
 ]
