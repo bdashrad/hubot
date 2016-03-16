@@ -27,7 +27,7 @@ module.exports = (robot) ->
   # deployments - The list of the most recent deployments from the GitHub API.
   # formatter - A basic formatter for the deployments that should work everywhere even though it looks gross.
   robot.on "hubot_deploy_recent_deployments", (msg, deployment, deployments, formatter) ->
-    msg.send formatter.message()
+    msg.send "```#{formatter.message()}```"
 
   # Reply with the environments that hubot-deploy knows about for a specific application.
   #
