@@ -842,7 +842,7 @@
     "hubot-tweeter": {
       "version": "0.3.2",
       "from": "willdurand/hubot-tweeter#tailordev",
-      "resolved": "git://github.com/willdurand/hubot-tweeter.git#7725d1d4b478a3f6a8bf4a2a6c1c69f36a1efa5e",
+      "resolved": "git://github.com/willdurand/hubot-tweeter.git#9dfc240ffceb848943d67831d08557a4e90803dc",
       "dependencies": {
         "coffee-script": {
           "version": "1.7.1",
