@@ -530,9 +530,9 @@
       }
     },
     "hubot-deploy": {
-      "version": "0.13.20",
-      "from": "willdurand/hubot-deploy#tailordev",
-      "resolved": "git://github.com/willdurand/hubot-deploy.git#22a53fb5b59759f257a54859aca8dbf57ecd814c",
+      "version": "0.13.21",
+      "from": "hubot-deploy@latest",
+      "resolved": "https://registry.npmjs.org/hubot-deploy/-/hubot-deploy-0.13.21.tgz",
       "dependencies": {
         "accepts": {
           "version": "1.1.4",
@@ -698,6 +698,11 @@
           "version": "1.2.11",
           "from": "mime@1.2.11",
           "resolved": "https://registry.npmjs.org/mime/-/mime-1.2.11.tgz"
+        },
+        "minimist": {
+          "version": "0.0.8",
+          "from": "minimist@0.0.8",
+          "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
         },
         "mkdirp": {
           "version": "0.5.0",
@@ -1083,14 +1088,20 @@
       "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-2.0.10.tgz"
     },
     "minimist": {
-      "version": "0.0.8",
-      "from": "minimist@0.0.8",
-      "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
+      "version": "0.0.10",
+      "from": "minimist@>=0.0.1 <0.1.0"
     },
     "mkdirp": {
       "version": "0.5.1",
       "from": "mkdirp@0.5.1",
-      "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz"
+      "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz",
+      "dependencies": {
+        "minimist": {
+          "version": "0.0.8",
+          "from": "minimist@0.0.8",
+          "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
+        }
+      }
     },
     "morgan": {
       "version": "1.6.1",
@@ -1185,8 +1196,8 @@
     },
     "papertrail-hubot": {
       "version": "1.0.0",
-      "from": "willdurand/papertrail-hubot#tailordev",
-      "resolved": "git://github.com/willdurand/papertrail-hubot.git#79892304dfb7a45940038d485ff4ff312e4dbdf6"
+      "from": "papertrail/papertrail-hubot",
+      "resolved": "git://github.com/papertrail/papertrail-hubot.git#79892304dfb7a45940038d485ff4ff312e4dbdf6"
     },
     "parseurl": {
       "version": "1.3.1",

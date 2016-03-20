@@ -9,7 +9,7 @@
     "hubot": "^2.16",
     "hubot-appearin": "^1.0",
     "hubot-circleci": "^0.8",
-    "hubot-deploy": "willdurand/hubot-deploy#tailordev",
+    "hubot-deploy": "^0.13.21",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-translate": "^0.2",
     "hubot-help": "^0.1",
@@ -21,7 +21,7 @@
     "hubot-slack": "^3.3",
     "hubot-tweeter": "willdurand/hubot-tweeter#tailordev",
     "hubot-youtube": "^1.0",
-    "papertrail-hubot": "willdurand/papertrail-hubot#tailordev"
+    "papertrail-hubot": "github:papertrail/papertrail-hubot"
   },
   "devDependencies": {
     "chai": "^3.3.0",
