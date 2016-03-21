@@ -13,5 +13,6 @@
   "hubot-circleci",
   "hubot-tweeter",
   "papertrail-hubot",
-  "hubot-datadog"
+  "hubot-datadog",
+  "hubot-alias"
 ]
