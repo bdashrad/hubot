@@ -81,6 +81,11 @@
       "from": "batch@0.5.3",
       "resolved": "https://registry.npmjs.org/batch/-/batch-0.5.3.tgz"
     },
+    "bignumber.js": {
+      "version": "1.1.1",
+      "from": "bignumber.js@>=1.1.1 <1.2.0",
+      "resolved": "https://registry.npmjs.org/bignumber.js/-/bignumber.js-1.1.1.tgz"
+    },
     "bl": {
       "version": "0.9.5",
       "from": "bl@>=0.9.0 <0.10.0",
@@ -349,6 +354,18 @@
       "from": "destroy@>=1.0.4 <1.1.0",
       "resolved": "https://registry.npmjs.org/destroy/-/destroy-1.0.4.tgz"
     },
+    "dogapi": {
+      "version": "1.0.7",
+      "from": "dogapi@>=1.0.0 <1.1.0",
+      "resolved": "https://registry.npmjs.org/dogapi/-/dogapi-1.0.7.tgz",
+      "dependencies": {
+        "minimist": {
+          "version": "1.2.0",
+          "from": "minimist@>=1.1.1 <2.0.0",
+          "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.0.tgz"
+        }
+      }
+    },
     "ee-first": {
       "version": "1.1.0",
       "from": "ee-first@1.1.0",
@@ -421,6 +438,11 @@
           "resolved": "https://registry.npmjs.org/uid-safe/-/uid-safe-2.0.0.tgz"
         }
       }
+    },
+    "extend": {
+      "version": "2.0.1",
+      "from": "extend@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/extend/-/extend-2.0.1.tgz"
     },
     "eyes": {
       "version": "0.1.8",
@@ -528,6 +550,11 @@
           "resolved": "https://registry.npmjs.org/coffee-script/-/coffee-script-1.6.3.tgz"
         }
       }
+    },
+    "hubot-datadog": {
+      "version": "0.2.4",
+      "from": "hubot-datadog@latest",
+      "resolved": "https://registry.npmjs.org/hubot-datadog/-/hubot-datadog-0.2.4.tgz"
     },
     "hubot-deploy": {
       "version": "0.13.21",
@@ -888,6 +915,11 @@
       "version": "2.0.1",
       "from": "inherits@>=2.0.1 <2.1.0"
     },
+    "ini": {
+      "version": "1.3.4",
+      "from": "ini@>=1.3.0 <1.4.0",
+      "resolved": "https://registry.npmjs.org/ini/-/ini-1.3.4.tgz"
+    },
     "ip-address": {
       "version": "5.0.2",
       "from": "ip-address@5.0.2",
@@ -912,6 +944,11 @@
       "version": "0.0.0",
       "from": "jsbn@0.0.0",
       "resolved": "https://registry.npmjs.org/jsbn/-/jsbn-0.0.0.tgz"
+    },
+    "json-bigint": {
+      "version": "0.1.4",
+      "from": "json-bigint@>=0.1.4 <0.2.0",
+      "resolved": "https://registry.npmjs.org/json-bigint/-/json-bigint-0.1.4.tgz"
     },
     "json-stringify-safe": {
       "version": "5.0.1",
@@ -1103,6 +1140,11 @@
         }
       }
     },
+    "moment": {
+      "version": "2.10.6",
+      "from": "moment@>=2.10.0 <2.11.0",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.10.6.tgz"
+    },
     "morgan": {
       "version": "1.6.1",
       "from": "morgan@>=1.6.1 <1.7.0",
@@ -1258,6 +1300,17 @@
           "version": "0.4.13",
           "from": "iconv-lite@0.4.13",
           "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.13.tgz"
+        }
+      }
+    },
+    "rc": {
+      "version": "1.1.6",
+      "from": "rc@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/rc/-/rc-1.1.6.tgz",
+      "dependencies": {
+        "minimist": {
+          "version": "1.2.0",
+          "from": "minimist@>=1.2.0 <2.0.0"
         }
       }
     },
