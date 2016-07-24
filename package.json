@@ -9,6 +9,7 @@
     "hubot": "^2.19",
     "hubot-alias": "^0.1.9",
     "hubot-appearin": "^1.0",
+    "hubot-auto-deploy": "^0.1.9",
     "hubot-circleci": "^0.8",
     "hubot-datadog": "^0.2.4",
     "hubot-deploy": "^0.13.21",

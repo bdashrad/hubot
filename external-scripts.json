@@ -14,5 +14,6 @@
   "hubot-tweeter",
   "papertrail-hubot",
   "hubot-datadog",
-  "hubot-alias"
+  "hubot-alias",
+  "hubot-auto-deploy"
 ]
