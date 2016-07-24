@@ -6,7 +6,7 @@
   "description": "Our superhero!",
   "dependencies": {
     "coffee-script": "^1.10",
-    "hubot": "^2.16",
+    "hubot": "^2.19",
     "hubot-alias": "^0.1.9",
     "hubot-appearin": "^1.0",
     "hubot-circleci": "^0.8",
