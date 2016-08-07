@@ -924,9 +924,9 @@
       "resolved": "https://registry.npmjs.org/hubot-datadog/-/hubot-datadog-0.2.4.tgz"
     },
     "hubot-deploy": {
-      "version": "0.13.25",
-      "from": "hubot-deploy@0.13.25",
-      "resolved": "https://registry.npmjs.org/hubot-deploy/-/hubot-deploy-0.13.25.tgz",
+      "version": "0.13.24",
+      "from": "willdurand/hubot-deploy#tailordev",
+      "resolved": "git://github.com/willdurand/hubot-deploy.git#c594243efe7faa7c8c00d19b7fa7ae3dd7258530",
       "dependencies": {
         "accepts": {
           "version": "1.1.4",
