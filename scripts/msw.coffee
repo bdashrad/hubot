@@ -20,6 +20,10 @@ module.exports = (robot) ->
   gh.handleErrors (response) ->
     console.log response
 
+  slackLink = (channel, timestamp) ->
+    ts = timestamp.replace('.', '')
+    return "https://tailordev.slack.com/archives/#{channel}/p#{ts}"
+
   createIssue = (payload, res) ->
     url = "/repos/TailorDev/ModernScienceWeekly/issues"
 
@@ -33,9 +37,15 @@ module.exports = (robot) ->
   robot.respond /msw add (https?:\/\/[^\s]+)(\sas\s(.+))?/i, (msg) ->
     link = msg.match[1]
     title = msg.match[3] || 'New link from Slack'
-    permalink = msg.message.permalink || 'none'
 
-    payload  = {
+    permalink = 'none'
+    if robot.adapterName is "slack"
+      # cf. https://github.com/slackhq/hubot-slack/issues/328
+      room = msg.message.user.room
+      room = robot.adapter.client.rtm.dataStore.getChannelGroupOrDMById room
+      permalink = slackLink room.name, msg.message.id
+
+    payload = {
       title: title,
       body: "#{link}\n\nSlack URL: #{permalink}",
     }
