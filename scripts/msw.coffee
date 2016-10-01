@@ -41,13 +41,16 @@ module.exports = (robot) ->
     permalink = 'none'
     if robot.adapterName is "slack"
       # cf. https://github.com/slackhq/hubot-slack/issues/328
-      room = msg.message.user.room
-      room = robot.adapter.client.rtm.dataStore.getChannelGroupOrDMById room
-      permalink = slackLink room.name, msg.message.id
+      channel = msg.message.user.room
+      if /^C.+/.test channel
+        room = robot.adapter.client.rtm.dataStore.getChannelGroupOrDMById room
+        channel = room.name
+
+      permalink = slackLink channel, msg.message.id
 
     payload = {
       title: title,
-      body: "#{link}\n\nSlack URL: #{permalink}",
+      body: "#{link}\n\n---\nSlack URL: #{permalink}",
     }
 
     createIssue payload, msg
