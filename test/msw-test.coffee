@@ -50,3 +50,18 @@ describe 'hubot msw', ->
     helper.converse @robot, @user, '/msw add http://example.org as Example.org website', (_, response) ->
       assert.equal response, "I've opened the issue #123 (issue-url)"
       done()
+
+  it 'should deal with errors', (done) ->
+    api
+      .post(
+        '/repos/TailorDev/ModernScienceWeekly/issues',
+        {
+          title: 'Example.org website',
+          body: 'http://example.org\n\n---\nSlack URL: none',
+        }
+      )
+      .reply(404, { message: '404' })
+
+    helper.converse @robot, @user, '/msw add http://example.org as Example.org website', (_, response) ->
+      assert.equal response, 'Looks like something went wrong... :confused:'
+      done()

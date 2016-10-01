@@ -6,6 +6,7 @@
 #
 # Configuration:
 #   HUBOT_GITHUB_TOKEN
+#   HUBOT_SLACK_TEAM
 #
 # Commands:
 #   hubot msw add <link> as <issue title> - Create a new issue in the MSW repo.
@@ -14,33 +15,30 @@
 #   William Durand
 
 githubot = require 'githubot'
+utils = require '../src/utils'
+slack = require '../src/slack'
 
-slackTeam  = 'tailordev'
+slackTeam  = process.env.HUBOT_SLACK_TEAM ? 'tailordev'
 repository = 'TailorDev/ModernScienceWeekly'
 
 module.exports = (robot) ->
   gh = githubot(robot)
-  gh.handleErrors (response) ->
-    console.log response
-
-  ###
-  Returns a slack permalink
-  ###
-  slackLink = (channel, timestamp) ->
-    ts = timestamp.replace('.', '')
-    return "https://#{slackTeam}.slack.com/archives/#{channel}/p#{ts}"
 
   ###
   Create a new issue given a link and a title (optionally)
   ###
-  createIssue = (title, content, res) ->
+  createIssue = (title, content, cb) ->
     url = "/repos/#{repository}/issues"
     payload =
       title: title
       body: content
 
+    # error handler
+    gh.handleErrors (response) ->
+      cb response
+
     gh.post url, payload, (issue) ->
-      res.reply "I've opened the issue ##{issue.number} (#{issue.html_url})"
+      cb issue
 
   ###
   Listeners
@@ -52,14 +50,15 @@ module.exports = (robot) ->
 
     permalink = 'none'
     if robot.adapterName is "slack"
-      # cf. https://github.com/slackhq/hubot-slack/issues/328
-      channel = msg.message.user.room
-      if /^C.+/.test channel
-        room = robot.adapter.client.rtm.dataStore.getChannelGroupOrDMById room
-        channel = room.name
-
-      permalink = slackLink channel, msg.message.id
+      channel = utils.getRoomName robot, msg.message
+      permalink = slack.getPermalink slackTeam, channel, msg.message.id
 
     content = "#{link}\n\n---\nSlack URL: #{permalink}"
 
-    createIssue title, content, msg
+    createIssue title, content, (response) ->
+      if response.error
+        reply = 'Looks like something went wrong... :confused:'
+      else
+        reply = "I've opened the issue ##{response.number} (#{response.html_url})"
+
+      msg.reply reply

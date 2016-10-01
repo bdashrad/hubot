@@ -53,13 +53,13 @@ module.exports = (robot) ->
       permalink = slack.getPermalink slackTeam, channel, msg.message.id
       comment = "FTR, we have discussed this on Slack: #{permalink}"
 
-      createComment owner, repo, number, comment, (c) ->
-        if c.error
+      createComment owner, repo, number, comment, (response) ->
+        if response.error
           reply = 'Looks like something went wrong... :confused:'
         else
           reply = [
             'This conversation :point_up: is now engraved forever!',
-            "(#{c.html_url})"
+            "(#{response.html_url})"
           ].join ' '
 
         msg.reply reply
