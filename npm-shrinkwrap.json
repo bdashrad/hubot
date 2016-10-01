@@ -344,6 +344,11 @@
       "from": "caseless@>=0.8.0 <0.9.0",
       "resolved": "http://registry.npmjs.org/caseless/-/caseless-0.8.0.tgz"
     },
+    "chai": {
+      "version": "3.5.0",
+      "from": "chai@>=3.3.0 <4.0.0",
+      "resolved": "https://registry.npmjs.org/chai/-/chai-3.5.0.tgz"
+    },
     "chalk": {
       "version": "1.1.3",
       "from": "chalk@>=1.0.0 <2.0.0",
@@ -553,6 +558,11 @@
           "resolved": "https://registry.npmjs.org/type-detect/-/type-detect-0.1.1.tgz"
         }
       }
+    },
+    "deep-equal": {
+      "version": "1.0.1",
+      "from": "deep-equal@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/deep-equal/-/deep-equal-1.0.1.tgz"
     },
     "deep-extend": {
       "version": "0.4.1",
@@ -768,6 +778,18 @@
           "version": "1.0.0",
           "from": "assert-plus@>=1.0.0 <2.0.0",
           "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-1.0.0.tgz"
+        }
+      }
+    },
+    "githubot": {
+      "version": "1.0.1",
+      "from": "githubot@latest",
+      "resolved": "https://registry.npmjs.org/githubot/-/githubot-1.0.1.tgz",
+      "dependencies": {
+        "async": {
+          "version": "0.2.10",
+          "from": "async@>=0.2.0 <0.3.0",
+          "resolved": "https://registry.npmjs.org/async/-/async-0.2.10.tgz"
         }
       }
     },
@@ -1654,6 +1676,23 @@
       "from": "negotiator@0.5.3",
       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.5.3.tgz"
     },
+    "nock": {
+      "version": "8.0.0",
+      "from": "nock@latest",
+      "resolved": "https://registry.npmjs.org/nock/-/nock-8.0.0.tgz",
+      "dependencies": {
+        "lodash": {
+          "version": "4.16.2",
+          "from": "lodash@>=4.8.2 <5.0.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.16.2.tgz"
+        },
+        "qs": {
+          "version": "6.2.1",
+          "from": "qs@>=6.0.2 <7.0.0",
+          "resolved": "https://registry.npmjs.org/qs/-/qs-6.2.1.tgz"
+        }
+      }
+    },
     "node-uuid": {
       "version": "1.4.7",
       "from": "node-uuid@>=1.4.0 <1.5.0",
@@ -1743,6 +1782,11 @@
       "version": "1.0.7",
       "from": "process-nextick-args@>=1.0.6 <1.1.0",
       "resolved": "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-1.0.7.tgz"
+    },
+    "propagate": {
+      "version": "0.4.0",
+      "from": "propagate@0.4.0",
+      "resolved": "https://registry.npmjs.org/propagate/-/propagate-0.4.0.tgz"
     },
     "proxy-addr": {
       "version": "1.0.10",
