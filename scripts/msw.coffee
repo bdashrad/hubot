@@ -48,9 +48,8 @@ module.exports = (robot) ->
 
       permalink = slackLink channel, msg.message.id
 
-    payload = {
-      title: title,
-      body: "#{link}\n\n---\nSlack URL: #{permalink}",
-    }
+    payload =
+      title: title
+      body: "#{link}\n\n---\nSlack URL: #{permalink}"
 
     createIssue payload, msg

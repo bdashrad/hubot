@@ -27,7 +27,7 @@ describe 'hubot msw', ->
         '/repos/TailorDev/ModernScienceWeekly/issues',
         {
           title: 'New link from Slack',
-          body: 'http://example.org\n\nSlack URL: none',
+          body: 'http://example.org\n\n---\nSlack URL: none',
         }
       )
       .reply(201, { number: 123, html_url: 'issue-url' })
@@ -42,7 +42,7 @@ describe 'hubot msw', ->
         '/repos/TailorDev/ModernScienceWeekly/issues',
         {
           title: 'Example.org website',
-          body: 'http://example.org\n\nSlack URL: none',
+          body: 'http://example.org\n\n---\nSlack URL: none',
         }
       )
       .reply(201, { number: 123, html_url: 'issue-url' })
