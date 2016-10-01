@@ -8,7 +8,7 @@
 #   HUBOT_GITHUB_TOKEN
 #
 # Commands:
-#   hubot msw add <link> - Create a new issue in the MSW repo.
+#   hubot msw add <link> as <issue title> - Create a new issue in the MSW repo.
 #
 # Author:
 #   William Durand
