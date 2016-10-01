@@ -87,6 +87,6 @@ exports.converse = (robot, user, messages..., callback) ->
     for event in EVENTS
       robot.adapter.once event, receivedResponse
     message = messages.shift()
-    robot.adapter.receive new hubot.TextMessage user, message
+    robot.adapter.receive new hubot.TextMessage user, message, "#{messages.length}"
 
   sendNextMessage()
