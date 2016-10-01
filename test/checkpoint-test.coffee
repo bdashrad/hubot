@@ -60,3 +60,18 @@ describe 'hubot checkpoint', ->
       helper.converse @robot, @user, '/checkpoint in ba-bar#123', (_, response) ->
         assert.equal response, 'This conversation :point_up: is now engraved forever! (comment-url)'
         done()
+
+    it 'should deal with errors', (done) ->
+      api
+        .post(
+          '/repos/TailorDev/ba-bar/issues/123/comments',
+          { body: [
+            'FTR, we have discussed this on Slack:',
+            'https://tailordev.slack.com/archives/TestRoom/p0',
+          ].join(' ') }
+        )
+        .reply(404, { message: '404' })
+
+      helper.converse @robot, @user, '/checkpoint ba-bar#123', (_, response) ->
+        assert.equal response, 'Looks like something went wrong... :confused:'
+        done()

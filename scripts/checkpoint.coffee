@@ -11,7 +11,7 @@
 #   HUBOT_GITHUB_ORG
 #
 # Commands:
-#   hubot checkpoint - Comment on a GitHub issue with a link to the current discussion.
+#   hubot checkpoint <org>/<repo>#<issue> - Comment on a GitHub issue with a link to the current discussion.
 #
 # Author:
 #   William Durand
@@ -25,14 +25,16 @@ githubOrg = process.env.HUBOT_GITHUB_ORG ? 'TailorDev'
 
 module.exports = (robot) ->
   gh = githubot(robot)
-  gh.handleErrors (response) ->
-    console.log response
 
   ###
   Add a new comment on a GitHub issue.
   ###
   createComment = (owner, repo, number, comment, cb) ->
     url = "/repos/#{owner}/#{repo}/issues/#{number}/comments"
+
+    # error handler
+    gh.handleErrors (response) ->
+      cb response
 
     gh.post url, { body: comment }, (c) ->
       cb c
@@ -52,9 +54,14 @@ module.exports = (robot) ->
       comment = "FTR, we have discussed this on Slack: #{permalink}"
 
       createComment owner, repo, number, comment, (c) ->
-        msg.reply [
-          'This conversation :point_up: is now engraved forever!',
-          "(#{c.html_url})"
-        ].join(' ')
+        if c.error
+          reply = 'Looks like something went wrong... :confused:'
+        else
+          reply = [
+            'This conversation :point_up: is now engraved forever!',
+            "(#{c.html_url})"
+          ].join ' '
+
+        msg.reply reply
     else
       msg.reply 'I cannot do anything outside of Slack...'
