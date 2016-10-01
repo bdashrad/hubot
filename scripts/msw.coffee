@@ -15,17 +15,29 @@
 
 githubot = require 'githubot'
 
+slackTeam  = 'tailordev'
+repository = 'TailorDev/ModernScienceWeekly'
+
 module.exports = (robot) ->
   gh = githubot(robot)
   gh.handleErrors (response) ->
     console.log response
 
+  ###
+  Returns a slack permalink
+  ###
   slackLink = (channel, timestamp) ->
     ts = timestamp.replace('.', '')
-    return "https://tailordev.slack.com/archives/#{channel}/p#{ts}"
+    return "https://#{slackTeam}.slack.com/archives/#{channel}/p#{ts}"
 
-  createIssue = (payload, res) ->
-    url = "/repos/TailorDev/ModernScienceWeekly/issues"
+  ###
+  Create a new issue given a link and a title (optionally)
+  ###
+  createIssue = (title, content, res) ->
+    url = "/repos/#{repository}/issues"
+    payload =
+      title: title
+      body: content
 
     gh.post url, payload, (issue) ->
       res.reply "I've opened the issue ##{issue.number} (#{issue.html_url})"
@@ -48,8 +60,6 @@ module.exports = (robot) ->
 
       permalink = slackLink channel, msg.message.id
 
-    payload =
-      title: title
-      body: "#{link}\n\n---\nSlack URL: #{permalink}"
+    content = "#{link}\n\n---\nSlack URL: #{permalink}"
 
-    createIssue payload, msg
+    createIssue title, content, msg
