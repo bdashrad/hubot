@@ -29,6 +29,7 @@ describe 'hubot msw', ->
           {
             title: 'New link from Slack',
             body: 'http://example.org\n\n---\nSlack URL: none',
+            labels: [],
           }
         )
         .reply(201, { number: 123, html_url: 'issue-url' })
@@ -44,11 +45,28 @@ describe 'hubot msw', ->
           {
             title: 'Example.org website',
             body: 'http://example.org\n\n---\nSlack URL: none',
+            labels: [],
           }
         )
         .reply(201, { number: 123, html_url: 'issue-url' })
 
-      helper.converse @robot, @user, '/msw add http://example.org as Example.org website', (_, response) ->
+      helper.converse @robot, @user, '/msw add http://example.org Example.org website', (_, response) ->
+        assert.equal response, "I've opened the issue <issue-url|#123>."
+        done()
+
+    it 'should create a new issue with a label', (done) ->
+      api
+        .post(
+          '/repos/TailorDev/ModernScienceWeekly/issues',
+          {
+            title: 'Example.org website',
+            body: 'http://example.org\n\n---\nSlack URL: none',
+            labels: ['Open Science %26 Data'],
+          }
+        )
+        .reply(201, { number: 123, html_url: 'issue-url' })
+
+      helper.converse @robot, @user, '/msw add http://example.org Example.org website #open', (_, response) ->
         assert.equal response, "I've opened the issue <issue-url|#123>."
         done()
 
@@ -59,11 +77,12 @@ describe 'hubot msw', ->
           {
             title: 'Example.org website',
             body: 'http://example.org\n\n---\nSlack URL: none',
+            labels: [],
           }
         )
         .reply(404, { message: '404' })
 
-      helper.converse @robot, @user, '/msw add http://example.org as Example.org website', (_, response) ->
+      helper.converse @robot, @user, '/msw add http://example.org Example.org website', (_, response) ->
         assert.equal response, 'Looks like something went wrong... :confused:'
         done()
 
@@ -110,4 +129,15 @@ describe 'hubot msw', ->
 
       helper.converse @robot, @user, '/msw list open', (_, response) ->
         assert.include response, "Here is the only issue I've found:"
+        done()
+
+  describe 'categories', ->
+    it 'should return the available categories', (done) ->
+      helper.converse @robot, @user, '/msw cat', (_, response) ->
+        assert.include response, "Beyond Academia: beyond"
+        done()
+
+    it 'should return the available categories (2)', (done) ->
+      helper.converse @robot, @user, '/msw categories', (_, response) ->
+        assert.include response, "Beyond Academia: beyond"
         done()

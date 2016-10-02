@@ -9,8 +9,9 @@
 #   HUBOT_SLACK_TEAM
 #
 # Commands:
-#   hubot msw add <link> as <issue title> - Create a new issue in the MSW repo.
+#   hubot msw add <link> <issue title> #<category> - Create a new issue in the MSW repo.
 #   hubot msw list <category> - List the last MSW issues (limit = 10).
+#   hubot msw categories - List the available categories.
 #
 # Author:
 #   William Durand
@@ -26,13 +27,44 @@ module.exports = (robot) ->
   gh = githubot(robot)
   endpoint = "/repos/#{repository}/issues"
 
+  categories = [
+    {
+      name: 'Open Science & Data',
+      label: 'Open Science %26 Data',
+      alt: ['open', 'open science', 'open data', 'open science & data']
+    },
+    {
+      name: 'Cutting-edge Science',
+      label: 'Cutting-edge Science',
+      alt: ['cutting', 'cutting edge', 'cutting-edge', 'cutting-edge science']
+    },
+    {
+      name: 'Tools for Scientists',
+      label: 'Tools for Scientists',
+      alt: ['tools', 'tools for scientists']
+    },
+    {
+      name: 'Beyond Academia',
+      label: 'Beyond Academia',
+      alt: ['beyond', 'beyond academia']
+    }
+  ]
+
+  getLabel = (str) ->
+    str = str.toLowerCase().trim()
+    for c in categories
+      if str in c.alt
+        return c.label
+    return ''
+
   ###
-  Create a new issue given a link and a title (optionally)
+  Create a new issue given a link (required), a title and a label
   ###
-  createIssue = (title, content, cb) ->
+  createIssue = (title, content, label, cb) ->
     payload =
       title: title
       body: content
+      labels: if label then [label] else []
 
     # error handler
     gh.handleErrors (response) ->
@@ -59,9 +91,10 @@ module.exports = (robot) ->
   Listeners
   ###
 
-  robot.respond /msw add (https?:\/\/[^\s]+)(\sas\s(.+))?/i, (msg) ->
-    link = msg.match[1]
-    title = msg.match[3] || 'New link from Slack'
+  robot.respond /msw add (https?:\/\/[^\s]+)(\s([^#]+))?(#(.+))?/i, (msg) ->
+    link  = msg.match[1]
+    title = if msg.match[3] then msg.match[3].trim() else 'New link from Slack'
+    label = if msg.match[5] then getLabel msg.match[5] else ''
 
     permalink = 'none'
     if robot.adapterName is "slack"
@@ -70,7 +103,7 @@ module.exports = (robot) ->
 
     content = "#{link}\n\n---\nSlack URL: #{permalink}"
 
-    createIssue title, content, (response) ->
+    createIssue title, content, label, (response) ->
       if response.error
         reply = 'Looks like something went wrong... :confused:'
       else
@@ -79,20 +112,7 @@ module.exports = (robot) ->
       msg.reply reply
 
   robot.respond /msw list(\s(.+))?/i, (msg) ->
-    category = msg.match[2] || ''
-    category = switch category.toLowerCase()
-      when 'open' then 'Open Science %26 Data'
-      when 'open science' then 'Open Science %26 Data'
-      when 'open data' then 'Open Science & Data'
-      when 'cutting' then 'Cutting-edge Science'
-      when 'cutting edge' then 'Cutting-edge Science'
-      when 'cutting-edge' then 'Cutting-edge Science'
-      when 'cutting-edge science' then 'Cutting-edge Science'
-      when 'tools' then 'Tools for Scientists'
-      when 'tools for scientists' then 'Tools for Scientists'
-      when 'beyond' then 'Beyond Academia'
-      when 'beyond academia' then 'Beyond Academia'
-      else ''
+    category = if msg.match[2] then getLabel msg.match[2] else ''
 
     formatTitle = (title) ->
       if title.length > 30
@@ -126,3 +146,10 @@ module.exports = (robot) ->
           reply = reply.join "\n"
 
       msg.reply reply
+
+  robot.respond /msw cat(egories)?/i, (msg) ->
+    reply = []
+    for c in categories
+      reply.push "#{c.name}: #{c.alt.join ', '}"
+
+    msg.reply reply.join "\n"
