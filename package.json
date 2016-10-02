@@ -34,9 +34,9 @@
     "nock": "^8.0.0"
   },
   "engines": {
-    "node": "0.12.x"
+    "node": "^5.0"
   },
   "scripts": {
-    "test": "script/test"
+    "test": "bin/test"
   }
 }
