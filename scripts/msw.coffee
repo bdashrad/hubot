@@ -10,6 +10,7 @@
 #
 # Commands:
 #   hubot msw add <link> as <issue title> - Create a new issue in the MSW repo.
+#   hubot msw list <category> - List the last MSW issues (limit = 10).
 #
 # Author:
 #   William Durand
@@ -23,12 +24,12 @@ repository = 'TailorDev/ModernScienceWeekly'
 
 module.exports = (robot) ->
   gh = githubot(robot)
+  endpoint = "/repos/#{repository}/issues"
 
   ###
   Create a new issue given a link and a title (optionally)
   ###
   createIssue = (title, content, cb) ->
-    url = "/repos/#{repository}/issues"
     payload =
       title: title
       body: content
@@ -37,8 +38,22 @@ module.exports = (robot) ->
     gh.handleErrors (response) ->
       cb response
 
-    gh.post url, payload, (issue) ->
+    gh.post endpoint, payload, (issue) ->
       cb issue
+
+  ###
+  ###
+  getIssues = (category, limit, cb) ->
+    # error handler
+    gh.handleErrors (response) ->
+      cb response
+
+    url = "#{endpoint}?per_page=#{limit}"
+    if category
+      url = "#{url}&labels=#{category}"
+
+    gh.get url, (issues) ->
+      cb issues
 
   ###
   Listeners
@@ -60,5 +75,54 @@ module.exports = (robot) ->
         reply = 'Looks like something went wrong... :confused:'
       else
         reply = "I've opened the issue ##{response.number} (#{response.html_url})"
+
+      msg.reply reply
+
+  robot.respond /msw list(\s(.+))?/i, (msg) ->
+    category = msg.match[2] || ''
+    category = switch category.toLowerCase()
+      when 'open' then 'Open Science & Data'
+      when 'open science' then 'Open Science & Data'
+      when 'open data' then 'Open Science & Data'
+      when 'cutting' then 'Cutting-edge Science'
+      when 'cutting edge' then 'Cutting-edge Science'
+      when 'cutting-edge' then 'Cutting-edge Science'
+      when 'cutting-edge science' then 'Cutting-edge Science'
+      when 'tools' then 'Tools for Scientists'
+      when 'tools for scientists' then 'Tools for Scientists'
+      when 'beyond' then 'Beyond Academia'
+      when 'beyond academia' then 'Beyond Academia'
+      else ''
+
+    formatTitle = (title) ->
+      if title.length > 20
+        title = "#{title.substr 0, 17}..."
+      return "#{title}#{new Array(21 - title.length).join ' '}"
+
+    formatLabels = (labels) ->
+      s = []
+      labels.map (l) ->
+        s.push l.name
+      if s.length > 0
+        return "[#{s.join ', '}]"
+      return ''
+
+    getIssues category, 10, (response) ->
+      if response.error
+        reply = 'Looks like something went wrong... :confused:'
+      else
+        issues = response
+        count = issues.length
+        if count is 0
+          reply = "There is no issue mate."
+        else
+          if count is 1
+            reply = ["Here is the only issue I've found:", ""]
+          else
+            reply = ["Here are the last #{count} issues I've found:", ""]
+
+          issues.map (i) ->
+            reply.push "#{formatTitle i.title}: #{i.html_url} #{formatLabels i.labels}"
+          reply = reply.join "\n"
 
       msg.reply reply
