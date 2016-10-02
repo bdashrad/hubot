@@ -5,8 +5,6 @@
   "hubot-maps",
   "hubot-redis-brain",
   "hubot-rules",
-  "hubot-seen",
-  "hubot-qr",
   "hubot-youtube",
   "hubot-deploy",
   "hubot-appearin",
