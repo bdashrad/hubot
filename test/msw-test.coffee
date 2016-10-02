@@ -82,7 +82,7 @@ describe 'hubot msw', ->
 
       helper.converse @robot, @user, '/msw list', (_, response) ->
         assert.include response, "Here are the last #{results.length} issues I've found:"
-        assert.include response, 'Issue with a very...: issue-url-5'
+        assert.include response, 'Issue with a very very long... - issue-url-5'
         done()
 
     it 'should tell us when there is no issue', (done) ->
@@ -100,5 +100,14 @@ describe 'hubot msw', ->
         .reply(200, [{ title: 'title', html_url: 'html_url', labels: [] }])
 
       helper.converse @robot, @user, '/msw list Beyond', (_, response) ->
+        assert.include response, "Here is the only issue I've found:"
+        done()
+
+    it 'should list issues by category (2)', (done) ->
+      api
+        .get('/repos/TailorDev/ModernScienceWeekly/issues?per_page=10&labels=Open%20Science%20%26%20Data')
+        .reply(200, [{ title: 'title', html_url: 'html_url', labels: [] }])
+
+      helper.converse @robot, @user, '/msw list open', (_, response) ->
         assert.include response, "Here is the only issue I've found:"
         done()

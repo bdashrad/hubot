@@ -81,8 +81,8 @@ module.exports = (robot) ->
   robot.respond /msw list(\s(.+))?/i, (msg) ->
     category = msg.match[2] || ''
     category = switch category.toLowerCase()
-      when 'open' then 'Open Science & Data'
-      when 'open science' then 'Open Science & Data'
+      when 'open' then 'Open Science %26 Data'
+      when 'open science' then 'Open Science %26 Data'
       when 'open data' then 'Open Science & Data'
       when 'cutting' then 'Cutting-edge Science'
       when 'cutting edge' then 'Cutting-edge Science'
@@ -95,9 +95,9 @@ module.exports = (robot) ->
       else ''
 
     formatTitle = (title) ->
-      if title.length > 20
-        title = "#{title.substr 0, 17}..."
-      return "#{title}#{new Array(21 - title.length).join ' '}"
+      if title.length > 30
+        title = "#{title.substr 0, 27}..."
+      return title
 
     formatLabels = (labels) ->
       s = []
@@ -122,7 +122,7 @@ module.exports = (robot) ->
             reply = ["Here are the last #{count} issues I've found:", ""]
 
           issues.map (i) ->
-            reply.push "#{formatTitle i.title}: #{i.html_url} #{formatLabels i.labels}"
+            reply.push "#{formatTitle i.title} - #{i.html_url} #{formatLabels i.labels}"
           reply = reply.join "\n"
 
       msg.reply reply
