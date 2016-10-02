@@ -1676,23 +1676,6 @@
       "from": "negotiator@0.5.3",
       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.5.3.tgz"
     },
-    "nock": {
-      "version": "8.0.0",
-      "from": "nock@latest",
-      "resolved": "https://registry.npmjs.org/nock/-/nock-8.0.0.tgz",
-      "dependencies": {
-        "lodash": {
-          "version": "4.16.2",
-          "from": "lodash@>=4.8.2 <5.0.0",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.16.2.tgz"
-        },
-        "qs": {
-          "version": "6.2.1",
-          "from": "qs@>=6.0.2 <7.0.0",
-          "resolved": "https://registry.npmjs.org/qs/-/qs-6.2.1.tgz"
-        }
-      }
-    },
     "node-uuid": {
       "version": "1.4.7",
       "from": "node-uuid@>=1.4.0 <1.5.0",
@@ -1745,8 +1728,8 @@
     },
     "papertrail-hubot": {
       "version": "1.0.0",
-      "from": "papertrail/papertrail-hubot",
-      "resolved": "git://github.com/papertrail/papertrail-hubot.git#b21694aef230f324e3845e0bc197e5436d36ca4f"
+      "from": "willdurand/papertrail-hubot#tailordev",
+      "resolved": "git://github.com/willdurand/papertrail-hubot.git#b7d8ad1880de7d606aebe1b852fc811c291bea47"
     },
     "parseurl": {
       "version": "1.3.1",

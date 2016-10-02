@@ -25,7 +25,7 @@
     "hubot-slack": "^4.1.0",
     "hubot-tweeter": "willdurand/hubot-tweeter#tailordev",
     "hubot-youtube": "^1.0",
-    "papertrail-hubot": "papertrail/papertrail-hubot"
+    "papertrail-hubot": "github:willdurand/papertrail-hubot#tailordev"
   },
   "devDependencies": {
     "chai": "^3.3.0",
