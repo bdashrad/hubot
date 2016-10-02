@@ -34,7 +34,7 @@ describe 'hubot msw', ->
         .reply(201, { number: 123, html_url: 'issue-url' })
 
       helper.converse @robot, @user, '/msw add http://example.org', (_, response) ->
-        assert.equal response, "I've opened the issue #123 (issue-url)"
+        assert.equal response, "I've opened the issue <issue-url|#123>."
         done()
 
     it 'should create a new issue with a custom title', (done) ->
@@ -49,7 +49,7 @@ describe 'hubot msw', ->
         .reply(201, { number: 123, html_url: 'issue-url' })
 
       helper.converse @robot, @user, '/msw add http://example.org as Example.org website', (_, response) ->
-        assert.equal response, "I've opened the issue #123 (issue-url)"
+        assert.equal response, "I've opened the issue <issue-url|#123>."
         done()
 
     it 'should deal with errors', (done) ->

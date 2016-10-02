@@ -74,7 +74,7 @@ module.exports = (robot) ->
       if response.error
         reply = 'Looks like something went wrong... :confused:'
       else
-        reply = "I've opened the issue ##{response.number} (#{response.html_url})"
+        reply = "I've opened the issue <#{response.html_url}|##{response.number}>."
 
       msg.reply reply
 
