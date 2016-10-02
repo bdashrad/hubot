@@ -61,7 +61,7 @@ describe 'hubot msw', ->
           {
             title: 'Example.org website',
             body: 'http://example.org\n\n---\nSlack URL: none',
-            labels: ['Open Science %26 Data'],
+            labels: ['Open Science & Data'],
           }
         )
         .reply(201, { number: 123, html_url: 'issue-url' })

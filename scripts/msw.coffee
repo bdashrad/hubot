@@ -11,7 +11,7 @@
 # Commands:
 #   hubot msw add <link> <issue title> #<category> - Create a new issue in the MSW repo.
 #   hubot msw list <category> - List the last MSW issues (limit = 10).
-#   hubot msw categories - List the available categories.
+#   hubot msw categories - List the available categories and their shortcuts.
 #
 # Author:
 #   William Durand
@@ -30,22 +30,18 @@ module.exports = (robot) ->
   categories = [
     {
       name: 'Open Science & Data',
-      label: 'Open Science %26 Data',
       alt: ['open', 'open science', 'open data', 'open science & data']
     },
     {
       name: 'Cutting-edge Science',
-      label: 'Cutting-edge Science',
       alt: ['cutting', 'cutting edge', 'cutting-edge', 'cutting-edge science']
     },
     {
       name: 'Tools for Scientists',
-      label: 'Tools for Scientists',
       alt: ['tools', 'tools for scientists']
     },
     {
       name: 'Beyond Academia',
-      label: 'Beyond Academia',
       alt: ['beyond', 'beyond academia']
     }
   ]
@@ -54,7 +50,7 @@ module.exports = (robot) ->
     str = str.toLowerCase().trim()
     for c in categories
       if str in c.alt
-        return c.label
+        return c.name
     return ''
 
   ###
@@ -75,14 +71,14 @@ module.exports = (robot) ->
 
   ###
   ###
-  getIssues = (category, limit, cb) ->
+  getIssues = (label, limit, cb) ->
     # error handler
     gh.handleErrors (response) ->
       cb response
 
     url = "#{endpoint}?per_page=#{limit}"
-    if category
-      url = "#{url}&labels=#{category}"
+    if label
+      url = "#{url}&labels=#{encodeURIComponent(label)}"
 
     gh.get url, (issues) ->
       cb issues
@@ -112,7 +108,7 @@ module.exports = (robot) ->
       msg.reply reply
 
   robot.respond /msw list(\s(.+))?/i, (msg) ->
-    category = if msg.match[2] then getLabel msg.match[2] else ''
+    label = if msg.match[2] then getLabel msg.match[2] else ''
 
     formatTitle = (title) ->
       if title.length > 30
@@ -127,7 +123,7 @@ module.exports = (robot) ->
         return "[#{s.join ', '}]"
       return ''
 
-    getIssues category, 10, (response) ->
+    getIssues label, 10, (response) ->
       if response.error
         reply = 'Looks like something went wrong... :confused:'
       else
