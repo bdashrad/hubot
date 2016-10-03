@@ -9,7 +9,6 @@
     "githubot": "^1.0.1",
     "hubot": "^2.19",
     "hubot-alias": "^0.1.11",
-    "hubot-appearin": "^1.0",
     "hubot-auto-deploy": "^0.1.9",
     "hubot-circleci": "^0.8",
     "hubot-datadog": "^0.2.4",
