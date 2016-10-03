@@ -14,7 +14,6 @@
     "hubot-datadog": "^0.2.4",
     "hubot-deploy": "github:willdurand/hubot-deploy#tailordev",
     "hubot-diagnostics": "0.0.1",
-    "hubot-google-translate": "^0.2",
     "hubot-help": "^0.2.0",
     "hubot-maps": "0.0.2",
     "hubot-redis-brain": "0.0.3",
