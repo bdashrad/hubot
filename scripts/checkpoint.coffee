@@ -58,8 +58,8 @@ module.exports = (robot) ->
           reply = 'Looks like something went wrong... :confused:'
         else
           reply = [
-            'This conversation :point_up: is now engraved forever!',
-            "(#{response.html_url})"
+            'This conversation :point_up: is',
+            "<#{response.html_url}|now engraved forever>!"
           ].join ' '
 
         msg.reply reply

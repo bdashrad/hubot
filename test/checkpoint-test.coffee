@@ -43,7 +43,7 @@ describe 'hubot checkpoint', ->
         .reply(201, { number: 123, html_url: 'comment-url' })
 
       helper.converse @robot, @user, '/checkpoint in foo/bar#123', (_, response) ->
-        assert.equal response, 'This conversation :point_up: is now engraved forever! (comment-url)'
+        assert.equal response, 'This conversation :point_up: is <comment-url|now engraved forever>!'
         done()
 
     it 'should use the default organization', (done) ->
@@ -58,7 +58,7 @@ describe 'hubot checkpoint', ->
         .reply(201, { number: 123, html_url: 'comment-url' })
 
       helper.converse @robot, @user, '/checkpoint in ba-bar#123', (_, response) ->
-        assert.equal response, 'This conversation :point_up: is now engraved forever! (comment-url)'
+        assert.equal response, 'This conversation :point_up: is <comment-url|now engraved forever>!'
         done()
 
     it 'should deal with errors', (done) ->
