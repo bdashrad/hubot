@@ -51,7 +51,7 @@ module.exports = (robot) ->
     if robot.adapterName is "slack"
       channel = utils.getRoomName robot, msg.message
       permalink = slack.getPermalink slackTeam, channel, msg.message.id
-      comment = "FTR, we have discussed this on Slack: #{permalink}"
+      comment = "FTR, we have discussed this on Slack:\n:lock: #{permalink}"
 
       createComment owner, repo, number, comment, (response) ->
         if response.error

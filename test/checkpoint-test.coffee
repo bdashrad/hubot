@@ -37,8 +37,8 @@ describe 'hubot checkpoint', ->
           '/repos/foo/bar/issues/123/comments',
           { body: [
             'FTR, we have discussed this on Slack:',
-            'https://tailordev.slack.com/archives/TestRoom/p0',
-          ].join(' ') }
+            ':lock: https://tailordev.slack.com/archives/TestRoom/p0',
+          ].join "\n" }
         )
         .reply(201, { number: 123, html_url: 'comment-url' })
 
@@ -52,8 +52,8 @@ describe 'hubot checkpoint', ->
           '/repos/TailorDev/ba-bar/issues/123/comments',
           { body: [
             'FTR, we have discussed this on Slack:',
-            'https://tailordev.slack.com/archives/TestRoom/p0',
-          ].join(' ') }
+            ':lock: https://tailordev.slack.com/archives/TestRoom/p0',
+          ].join "\n" }
         )
         .reply(201, { number: 123, html_url: 'comment-url' })
 
@@ -67,8 +67,8 @@ describe 'hubot checkpoint', ->
           '/repos/TailorDev/ba-bar/issues/123/comments',
           { body: [
             'FTR, we have discussed this on Slack:',
-            'https://tailordev.slack.com/archives/TestRoom/p0',
-          ].join(' ') }
+            ':lock: https://tailordev.slack.com/archives/TestRoom/p0',
+          ].join "\n" }
         )
         .reply(404, { message: '404' })
 
