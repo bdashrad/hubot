@@ -144,7 +144,7 @@ module.exports = (robot) ->
       msg.reply reply
 
   robot.respond /msw cat(egories)?/i, (msg) ->
-    reply = []
+    reply = ['This is the list of MSW categories along with their shortcuts:']
     for c in categories
       reply.push "#{c.name}: #{c.alt.join ', '}"
 
