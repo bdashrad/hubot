@@ -16,7 +16,6 @@ module.exports = (robot) ->
     if githubDeployToken?
       deployment.setUserToken(githubDeployToken)
 
-
     deployment.post (err, status, body, headers, responseMessage) ->
       msg.send responseMessage if responseMessage?
 
@@ -35,23 +34,14 @@ module.exports = (robot) ->
   # deployment - The deployed app that matched up with the request.
   # formatter - A basic formatter for the deployments that should work everywhere even though it looks gross.
   robot.on "hubot_deploy_available_environments", (msg, deployment) ->
-    msg.send "#{deployment.name} can be deployed to #{deployment.environments.join(', ')}."
+    msg.send "#{deployment.name} can be deployed to: #{deployment.environments.join(', ')}."
 
   # An incoming webhook from GitHub for a deployment.
   #
   # deployment - A Deployment from github_events.coffee
   robot.on "github_deployment_event", (deployment) ->
-    robot.logger.info JSON.stringify(deployment)
 
   # An incoming webhook from GitHub for a deployment status.
   #
   # status - A DeploymentStatus from github_events.coffee
   robot.on "github_deployment_status_event", (status) ->
-    if status.notify
-      user  = robot.brain.userForId status.notify.user
-      status.actorName = user.name
-
-    messageBody = status.toSimpleString().replace(/^hubot-deploy: /i, '')
-    robot.logger.info messageBody
-    if status?.notify?.room?
-      robot.messageRoom status.notify.room, messageBody
