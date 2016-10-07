@@ -2,7 +2,7 @@
   "name": "hubot-bang-bang",
   "description": "Repeat the last command directed at hubot",
   "version": "1.0.0",
-  "author": "William Durand <will+git@drnd.me>",
+  "author": "Brad Clark <bdashrad@gmail.com>",
   "license": "MIT",
   "keywords": [
     "hubot",
@@ -10,10 +10,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-bang-bang.git"
+    "url": "git://github.com/bdashrad/hubot-bang-bang.git"
   },
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-bang-bang/issues"
+    "url": "https://github.com/bdashrad/hubot-bang-bang/issues"
   },
   "dependencies": {
     "coffee-script": "^1.11.1",

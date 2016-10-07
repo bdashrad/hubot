@@ -1,8 +1,31 @@
-hubot
-=====
+# hubot-bang-bang
 
-[![Build
-Status](https://travis-ci.org/TailorDev/hubot.svg?branch=master)](https://travis-ci.org/TailorDev/hubot)
+hubot scipt that recognized jira issue numbers and respond with their urls
 
-hubot is our chat bot built on the [Hubot](http://hubot.github.com) framework.
-It does everything but coding here at [TailorDev](http://tailordev.fr)!
+See [`src/bang-bang.coffee`](src/bang-bang.coffee) for full documentation.
+
+## Installation
+
+In hubot project repo, run:
+
+`npm install hubot-bang-bang --save`
+
+Then add **hubot-bang-bang** to your `external-scripts.json`:
+
+```json
+["hubot-bang-bang"]
+```
+
+## Sample Interaction
+
+```
+user1>> hubot hello
+hubot>> hello!
+user1>> hubot !!
+hubot>> hubot hello
+hubot>> hello!
+```
+
+## NPM Module
+
+https://www.npmjs.com/package/hubot-bang-bang
