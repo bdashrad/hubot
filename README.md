@@ -1,6 +1,6 @@
 # hubot-bang-bang
 
-hubot scipt that recognized jira issue numbers and respond with their urls
+Repeat the last command directed at hubot
 
 See [`src/bang-bang.coffee`](src/bang-bang.coffee) for full documentation.
 
