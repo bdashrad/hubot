@@ -1,6 +1,6 @@
 # hubot-bang-bang
 
-Repeat the last command directed at hubot
+Repeat the last command directed at hubot.
 
 See [`src/bang-bang.coffee`](src/bang-bang.coffee) for full documentation.
 
@@ -29,3 +29,6 @@ hubot>> hello!
 ## NPM Module
 
 https://www.npmjs.com/package/hubot-bang-bang
+
+## Credits
+Modifications to original bangbang.coffee by @willdurand

@@ -2,7 +2,7 @@
   "name": "hubot-bang-bang",
   "description": "Repeat the last command directed at hubot",
   "version": "1.0.1",
-  "author": "Brad Clark <bdashrad@gmail.com>",
+  "author": "William Durand <will+git@drnd.me>",
   "license": "MIT",
   "keywords": [
     "hubot",
