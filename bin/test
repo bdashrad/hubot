@@ -3,4 +3,4 @@
 # bootstrap environment
 source bin/bootstrap
 
-mocha --require coffee-script/register --compilers coffee:coffee-script  
+mocha --require coffee-script/register --compilers coffee:coffee-script
