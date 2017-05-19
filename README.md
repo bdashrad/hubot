@@ -1,5 +1,7 @@
 # hubot-bang-bang
 
+[![Build Status](https://travis-ci.org/bdashrad/hubot-bang-bang.svg?branch=master)](https://travis-ci.org/bdashrad/hubot-bang-bang)
+
 Repeat the last command directed at hubot.
 
 See [`src/bang-bang.coffee`](src/bang-bang.coffee) for full documentation.
