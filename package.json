@@ -27,6 +27,6 @@
   },
   "main": "index.coffee",
   "scripts": {
-    "test": "bin/test"
+    "test": "scripts/test"
   }
 }
